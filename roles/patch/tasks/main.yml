@@ -15,7 +15,7 @@
 
 - name: Get Distro Name
   debug:
-    msg: Patching: "{{ patching }}"
+    msg: "Patching: {{ patching }}"
 
 - name: Fail if package_update isn't successful
   fail:
