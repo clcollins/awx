@@ -1,7 +1,13 @@
 ---
+- name: Get Distro Name
+  debug:
+    msg: "{{ ansible_distribution }}"
+
 - name: Update disto packages
-  package:
-    name: *
+  yum:
+    name: '*'
     state: latest
+  when:
+    - ansible_distribution == 'Red Hat Enterprise Linux'
   tags:
     - patch
