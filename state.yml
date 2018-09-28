@@ -1,0 +1,13 @@
+---
+- hosts: all
+  roles:
+    - helloWorld
+    - common
+
+- hosts: tag_purpose_awx-monitor
+  roles:
+    - containers
+
+#- hosts: tag_purpose_awx-bastion
+#  roles:
+

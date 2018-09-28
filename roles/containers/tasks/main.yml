@@ -1,0 +1,18 @@
+---
+- name: Enable rhel server extras
+  ini_file:
+    path: /etc/yum.repos.d/redhat-rhui.repo
+    section: rhui-REGION-rhel-server-extras
+    option: enabled
+    value: 1
+  tags:
+    - repos
+    - containers
+
+- name: install podman
+  package:
+    name: podman
+    state: present
+  tags:
+    - packages
+    - containers
