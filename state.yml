@@ -10,6 +10,9 @@
   vars:
     - container_engine: docker
 
-#- hosts: tag_purpose_awx_bastion
-#  roles:
-
+- hosts: tag_purpose_awx_etcd
+  roles:
+    - containers
+    - etcd
+  vars:
+    - container_engine: docker
