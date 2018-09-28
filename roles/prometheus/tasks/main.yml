@@ -17,6 +17,10 @@
     - config
     - prometheus
 
+- name: Display prometheus image name
+  debug:
+    msg: "{{ prometheus_image }}"
+
 - name: Copy the prometheus image
   docker_image:
     name: "{{ prometheus_image }}"
