@@ -7,7 +7,14 @@
   yum:
     name: '*'
     state: latest
+  register: patching
   when:
     - ansible_distribution == 'RedHat'
   tags:
     - patch
+
+- name: Fail if package_update isn't successful
+  fail:
+    msg: "Host Patching Failed!"
+  when:
+    - patching is not succeeded
