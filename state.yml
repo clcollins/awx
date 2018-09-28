@@ -7,6 +7,7 @@
 - hosts: tag_purpose_awx_monitor
   roles:
     - containers
+    - prometheus
   vars:
     - container_engine: docker
 

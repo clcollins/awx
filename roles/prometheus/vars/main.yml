@@ -1,0 +1,18 @@
+---
+prometheus_repo: quay.io
+prometheus_registry: prometheus
+prometheus_image_name: prometheus
+prometheus_image_tag: "v2.4.2"
+prometheus_image: "{{ prometheus_repo}}/{{ prometheus_registry }}/{{ prometheus_image_name }}:{{ prometheus_image_tag }}"
+prometheus_port_bindings: 
+  - "090:9090"
+prometheus_volume_mounts:
+  - "/etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:z"
+  - "/etc/prometheus/data:/prometheus:z"
+
+scrape_configs:
+- name: prometheus
+  targets:
+    - localhost
+  port: 9090
+

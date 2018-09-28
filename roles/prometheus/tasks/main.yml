@@ -1,0 +1,40 @@
+---
+- name: Create prometheus config dir
+  file:
+    path: /etc/prometheus
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - prometheus
+
+- name: Copy prometheus config file
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+  tags:
+    - config
+    - prometheus
+
+- name: Copy the prometheus image
+  docker_image:
+    name: "{{ prometheus_image }}"
+  tags:
+    - containerImages
+    - prometheus
+  notify:
+    - restart prometheus
+
+- name: Create prometheus container
+  docker_container:
+    name: prometheus
+    image: "{{ prometheus_image }}"
+    volumes: "{{ prometheus_volume_mounts }}"
+    ports: "{{ prometheus_port_bindings }}"
+    state: started
+    restart_policy: yes
+  tags:
+    - containers
+    - prometheus
+~
