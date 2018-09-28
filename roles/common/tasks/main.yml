@@ -1,4 +1,11 @@
 ---
+- name: Ensure dbus is installed to set hostname on Debian  
+  apt:
+    name: dbus
+    state: latest
+  when:
+    - ansible_distribution == 'Debian'
+
 - name: Set hostname
   hostname:
     name: "{{ ec2_tag_Name }}"
