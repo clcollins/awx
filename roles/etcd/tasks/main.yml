@@ -30,7 +30,7 @@
     image: "{{ etcd_image }}"
     volumes: "{{ etcd_volume_mounts }}"
     ports: "{{ etcd_port_bindings }}"
-    cmd: "{{ etcd_cmd }}"
+    command: "{{ etcd_cmd }}"
     state: started
     restart_policy: always
   tags:
