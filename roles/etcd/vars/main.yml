@@ -1,0 +1,16 @@
+---
+etcd_repo: quay.io
+etcd_registry: coreos
+etcd_image_name: etcd
+etcd_image_tag: "v3.3.8"
+etcd_image: "{{ etcd_repo}}/{{ etcd_registry }}/{{ etcd_image_name }}:{{ etcd_image_tag }}"
+etcd_port_bindings: 
+  - "2379:2379"
+  - "2380:2380"
+etcd_host_dir: /etc/etcd
+etcd_volume_mounts:
+  - "{{ etcd_host_dir }}/data:/etcd-data:z"
+etcd_cmd: "/usr/local/bin/etcd --data-dir=/etcd-data --name node1 --initial-advertise-peer-urls http://{{ ansible_default_ipv4.address }}:2380 --listen-peer-urls http://0.0.0.0:2380 --advertise-client-urls http://{{ ansible_default_ipv4.address }}:2379 --listen-client-urls http://0.0.0.0:2379 --initial-cluster node1=http://{{ ansible_default_ipv4.address }}:2380"
+
+
+  

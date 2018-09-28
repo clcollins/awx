@@ -1,0 +1,38 @@
+---
+- name: Create etcd config dir
+  file:
+    path: "{{ etcd_host_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0777
+  tags:
+    - etcd
+
+- name: Display etcd image name
+  debug:
+    msg: "{{ etcd_image }}"
+  tags:
+    - etcd
+
+- name: Copy the etcd image
+  docker_image:
+    name: "{{ etcd_image }}"
+  tags:
+    - containerImages
+    - etcd
+  notify:
+    - restart etcd
+
+- name: Create etcd container
+  docker_container:
+    name: etcd
+    image: "{{ etcd_image }}"
+    volumes: "{{ etcd_volume_mounts }}"
+    ports: "{{ etcd_port_bindings }}"
+    cmd: "{{ etcd_cmd }}"
+    state: started
+    restart_policy: always
+  tags:
+    - containers
+    - etcd
