@@ -22,3 +22,13 @@
   tags:
     - packages
     - containers
+
+- name: "start {{ container_engine }} daemon"
+  systemd:
+    name: "{{ container_engine }}"
+    state: started
+  when:
+    - container_engine == 'docker'
+  tags:
+    - systemd
+    - containers
