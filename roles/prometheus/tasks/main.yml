@@ -1,11 +1,11 @@
 ---
 - name: Create prometheus config dir
   file:
-    path: /etc/prometheus
+    path: "{{ prometheus_host_dir }}"
     state: directory
     owner: root
     group: root
-    mode: 0755
+    mode: 0777
   tags:
     - prometheus
 

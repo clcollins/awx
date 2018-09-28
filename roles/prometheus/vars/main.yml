@@ -5,10 +5,11 @@ prometheus_image_name: prometheus
 prometheus_image_tag: "v2.4.2"
 prometheus_image: "{{ prometheus_repo}}/{{ prometheus_registry }}/{{ prometheus_image_name }}:{{ prometheus_image_tag }}"
 prometheus_port_bindings: 
-  - "090:9090"
+  - "9090:9090"
+prometheus_host_dir: /etc/prometheus
 prometheus_volume_mounts:
-  - "/etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:z"
-  - "/etc/prometheus/data:/prometheus:z"
+  - "{{ prometheus_host_dir }}/prometheus.yml:/etc/prometheus/prometheus.yml:z"
+  - "{{ prometheus_host_dir }}/data:/prometheus:z"
 
 scrape_configs:
 - name: prometheus
