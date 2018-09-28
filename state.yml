@@ -4,10 +4,10 @@
     - helloWorld
     - common
 
-- hosts: tag_purpose_awx-monitor
+- hosts: tag_purpose_awx_monitor
   roles:
     - containers
 
-#- hosts: tag_purpose_awx-bastion
+#- hosts: tag_purpose_awx_bastion
 #  roles:
 
