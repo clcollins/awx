@@ -1,0 +1,9 @@
+---
+- name: Set hostname
+  hostname:
+    name: "{{ ec2_tag_Name }}"
+
+- name: fqdn in prompt
+  lineinfile:
+    path: /root/.bashrc
+    line: 'PS1="[\u@\H \W] \$ "'
