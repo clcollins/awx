@@ -13,6 +13,10 @@
   tags:
     - patch
 
+- name: Get Distro Name
+  debug:
+    msg: Patching: "{{ patching }}"
+
 - name: Fail if package_update isn't successful
   fail:
     msg: "Host Patching Failed!"
