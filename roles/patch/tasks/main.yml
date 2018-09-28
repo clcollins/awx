@@ -8,6 +8,6 @@
     name: '*'
     state: latest
   when:
-    - ansible_distribution == 'Red Hat Enterprise Linux'
+    - ansible_distribution == 'RedHat'
   tags:
     - patch
