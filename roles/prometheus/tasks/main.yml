@@ -37,7 +37,7 @@
     volumes: "{{ prometheus_volume_mounts }}"
     ports: "{{ prometheus_port_bindings }}"
     state: started
-    restart_policy: yes
+    restart_policy: always
   tags:
     - containers
     - prometheus
