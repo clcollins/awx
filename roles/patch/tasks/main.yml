@@ -13,6 +13,16 @@
   tags:
     - patch
 
+- name: Apt upgrade
+  apt:
+    name: '*'
+    state: latest
+  register: patching
+  when:
+    - ansible_distribution == 'Debian'
+  tags:
+    - patch
+
 - name: Get Distro Name
   debug:
     msg: "Patching: {{ patching }}"
