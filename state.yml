@@ -1,7 +1,6 @@
 ---
 - hosts: all
   roles:
-    - helloWorld
     - common
 
 - hosts: tag_purpose_awx_monitor
