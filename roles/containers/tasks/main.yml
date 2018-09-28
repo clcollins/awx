@@ -9,9 +9,22 @@
     - repos
     - containers
 
-- name: install podman
+- name: install pip
   package:
-    name: podman
+    state: present
+    name: python2-pip
+  when:
+    - container_engine == 'docker'
+
+- name: install Docker-Py
+  pip:
+    name: docker-py
+  when:
+    - container_engine == 'docker'
+
+- name: install container engine
+  package:
+    name: "{{ container_engine }}"
     state: present
   tags:
     - packages

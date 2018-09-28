@@ -7,6 +7,8 @@
 - hosts: tag_purpose_awx_monitor
   roles:
     - containers
+  vars:
+    - container_engine: docker
 
 #- hosts: tag_purpose_awx_bastion
 #  roles:
