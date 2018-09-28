@@ -29,6 +29,7 @@
 - name: install Docker-Py
   pip:
     name: docker-py
+    executable: /opt/rh/python27/root/usr/bin/pip
   when:
     - container_engine == 'docker'
 
