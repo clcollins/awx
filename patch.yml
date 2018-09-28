@@ -1,4 +1,4 @@
 ---
-- hosts: tags_patching_managed
+- hosts: tag_patching_managed
   roles:
     - patch
