@@ -3,7 +3,7 @@
   debug:
     msg: "{{ ansible_distribution }}"
 
-- name: Update disto packages
+- name: Yum update
   yum:
     name: '*'
     state: latest
