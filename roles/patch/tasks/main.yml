@@ -13,6 +13,15 @@
   tags:
     - patch
 
+- name: Ensure aptitude is installed for Apt
+  apt:
+    name: aptitude
+    state: latest
+  when:
+    - ansible_distribution == 'Debian'
+  tags:
+    - patch
+
 - name: Apt upgrade
   apt:
     name: '*'
